@@ -1,0 +1,12 @@
+#container {
+    border: 1px solid black;
+    width: 360px;
+    height: 360px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+}
+
+#container > div {
+    border: 2px solid red;
+}
