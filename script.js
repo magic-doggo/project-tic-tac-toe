@@ -1,38 +1,45 @@
-// const Gameboard = {
-//     gameboard: []
-// }
-
 // const players = [
 //     {
 //         name: playerOneName,
-//         sign: 1
+//         sign: "X"
 //     },
 //     {
 //         name: playerTwoName,
-//         sign: 2
+//         sign: "O"
 //     }
 // ]
+
+// let activePlayer = players[0]
+// const switchPlayerTurn = () => {
+//     if (activePlayer = players[0]) {
+//         activePlayer = players[1]
+//     }
+//     else {
+//         activePlayer = players[0]
+//     }
+// }
+
 // let container = document.getElementById("container")
 
 function gameBoard() {
     return {cells: ["X", "O", "asd", 4, null, null, null, null, null]}
 }
 
-gameObject = gameBoard()
+const gameObject = gameBoard() //works without let? should add it
 console.log(gameObject.cells)
 
-function updateBoard() {
+function createBoard() { //or maybe do without this function?
     gameObject.cells.forEach(pasta => {
         let newCell = document.createElement("div")
         document.getElementById("container").appendChild(newCell)
-        newCell.textContent = pasta
+        newCell.addEventListener("click", placeToken)
 
-        newCell.addEventListener("click", placeToken) //maybe put this somewhere else?
         function placeToken(){
             console.log(pasta)
-        } //could i run the updateBoard() function here, to run every time a cell is clicked(token placed), only of cell is not x/o
-        console.log(pasta)
+            newCell.textContent = pasta //wont be needed when match starts? or will it?
+        }
+        // } //could i run the updateBoard() function here, to run every time a cell is clicked(token placed), only of cell is not x/o
     })
 }
 
-updateBoard()
+createBoard()
