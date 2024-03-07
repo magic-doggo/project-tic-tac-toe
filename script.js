@@ -36,9 +36,13 @@ function createBoard() {
             if (cellsArray[index] == null) {
                 cellsArray[index] = activePlayer.sign;
                 newCell.textContent = activePlayer.sign;
-                console.log(gameObject.cells);
-                checkWinner();
-                console.log(checkWinner())
+                // console.log(gameObject.cells);
+                // checkWinner();
+                if (checkWinner() == true) {
+                    displayWinner()
+                    return
+                }
+                // console.log(checkWinner())
                 switchPlayerTurn();
             }
             else return;
@@ -51,7 +55,7 @@ console.log(activePlayer.name)
 // 123
 // 456
 // 789
-console.log(gameObject.cells[1])
+// console.log(gameObject.cells[1])
 
 function checkWinner() {
     let winningCombinations = [
@@ -67,13 +71,16 @@ function checkWinner() {
     for (let i = 0; i < winningCombinations.length; i++){
         const[a, b, c] = winningCombinations[i] //destructuring assignment
         if (gameObject.cells[a] == gameObject.cells[b] && gameObject.cells[b] == gameObject.cells[c] && gameObject.cells[a] != null) {
-            // console.log("winnnerasd")
+            console.log("winnnerasd")
             return true;
-        }
-        else {
-            // console.log("no winnerasdasd")
-            return false;
         }
     }
 }   
+
+function displayWinner() {
+    let winner = document.getElementById("winner")
+    // if activePlayer
+    winner.innerText = `The winner is ${activePlayer.name}`    
+    console.log(winner.innerText)
+}
 
