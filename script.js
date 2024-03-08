@@ -1,3 +1,6 @@
+let nrTokensPlaced = 0
+let winner = document.getElementById("winner")
+
 const players = [
     {
         name: "alex",
@@ -36,19 +39,24 @@ function createBoard() {
             if (cellsArray[index] == null) {
                 cellsArray[index] = activePlayer.sign;
                 newCell.textContent = activePlayer.sign;
+                nrTokensPlaced += 1;
+                console.log(nrTokensPlaced)
                 if (checkWinner() == true) {
                     displayWinner()
-                    // newCell.classList.add("squareClass")
-                    let cellz = document.querySelectorAll(".squareClass")
-                    cellz.forEach(myFunction)
+                    let cellz = document.querySelectorAll(".squareClass");
+                    cellz.forEach(myFunction);
                     function myFunction (cell){
-                    cell.classList.add("disabled")
+                    cell.classList.add("disabled");
                     }
                     return
                 }
+                if (nrTokensPlaced == 9){
+                    console.log("draw")
+                    winner.innerText = "Draw"
+                }
                 switchPlayerTurn();
             }
-            else return; //what is this
+            else return; //do i really need this
         }
     })
 }
@@ -77,7 +85,6 @@ function checkWinner() {
 }   
 
 function displayWinner() {
-    let winner = document.getElementById("winner")
     winner.innerText = `The winner is ${activePlayer.name}`    
     console.log(winner.innerText)
 
