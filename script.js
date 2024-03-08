@@ -30,32 +30,31 @@ function createBoard() {
     gameObject.cells.forEach((cell, index, cellsArray) => {
         let newCell = document.createElement("div")
         document.getElementById("container").appendChild(newCell)
-        
+        newCell.classList.add("squareClass")
         newCell.addEventListener("click", placeToken)
         function placeToken(){
             if (cellsArray[index] == null) {
                 cellsArray[index] = activePlayer.sign;
                 newCell.textContent = activePlayer.sign;
-                // console.log(gameObject.cells);
-                // checkWinner();
                 if (checkWinner() == true) {
                     displayWinner()
+                    // newCell.classList.add("squareClass")
+                    let cellz = document.querySelectorAll(".squareClass")
+                    cellz.forEach(myFunction)
+                    function myFunction (cell){
+                    cell.classList.add("disabled")
+                    }
                     return
                 }
-                // console.log(checkWinner())
                 switchPlayerTurn();
             }
-            else return;
+            else return; //what is this
         }
     })
 }
 
 createBoard()
 console.log(activePlayer.name)
-// 123
-// 456
-// 789
-// console.log(gameObject.cells[1])
 
 function checkWinner() {
     let winningCombinations = [
@@ -79,8 +78,8 @@ function checkWinner() {
 
 function displayWinner() {
     let winner = document.getElementById("winner")
-    // if activePlayer
     winner.innerText = `The winner is ${activePlayer.name}`    
     console.log(winner.innerText)
+
 }
 

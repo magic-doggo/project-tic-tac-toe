@@ -10,3 +10,8 @@
 #container > div {
     border: 2px solid red;
 }
+
+.disabled {
+    pointer-events: none;
+    opacity: 0.4;
+}
