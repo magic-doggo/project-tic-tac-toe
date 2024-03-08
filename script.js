@@ -1,6 +1,7 @@
 let nrTokensPlaced = 0
 let winner = document.getElementById("winner")
-
+let container = document.getElementById("container")
+let newGame = document.getElementById("start")
 const players = [
     {
         name: "alex",
@@ -51,7 +52,7 @@ function createBoard() {
                     return
                 }
                 if (nrTokensPlaced == 9){
-                    console.log("draw")
+                    // console.log("draw")
                     winner.innerText = "Draw"
                 }
                 switchPlayerTurn();
@@ -78,7 +79,6 @@ function checkWinner() {
     for (let i = 0; i < winningCombinations.length; i++){
         const[a, b, c] = winningCombinations[i] //destructuring assignment
         if (gameObject.cells[a] == gameObject.cells[b] && gameObject.cells[b] == gameObject.cells[c] && gameObject.cells[a] != null) {
-            console.log("winnnerasd")
             return true;
         }
     }
@@ -86,7 +86,20 @@ function checkWinner() {
 
 function displayWinner() {
     winner.innerText = `The winner is ${activePlayer.name}`    
-    console.log(winner.innerText)
-
 }
 
+function StartNewGame() {
+    removeAllChildNodes(container);
+    nrTokensPlaced = 0;
+    gameObject.cells = [null, null, null, null, null, null, null, null, null];
+    winner.textContent = ""
+    createBoard()
+}
+
+function removeAllChildNodes(parent) {
+    while (parent.firstChild) {
+        parent.removeChild(parent.firstChild);
+    }
+}
+
+newGame.addEventListener("click", StartNewGame)
