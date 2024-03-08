@@ -63,8 +63,6 @@ function createBoard() {
 }
 
 createBoard()
-console.log(activePlayer.name)
-
 function checkWinner() {
     let winningCombinations = [
         [0, 1, 2],
@@ -92,8 +90,9 @@ function StartNewGame() {
     removeAllChildNodes(container);
     nrTokensPlaced = 0;
     gameObject.cells = [null, null, null, null, null, null, null, null, null];
-    winner.textContent = ""
-    createBoard()
+    winner.textContent = "";
+    activePlayer = players[0];
+    createBoard();
 }
 
 function removeAllChildNodes(parent) {
@@ -101,5 +100,15 @@ function removeAllChildNodes(parent) {
         parent.removeChild(parent.firstChild);
     }
 }
-
 newGame.addEventListener("click", StartNewGame)
+
+const submitNamesButton = document.getElementById("submit")
+submitNamesButton.addEventListener("click", changeNames)
+function changeNames(event){
+    event.preventDefault();
+    players[0].name = document.getElementById("player1").value;
+    players[1].name = document.getElementById("player2").value;
+    document.getElementById("player1Name").innerText = `Player one's name is ${players[0].name}`
+    document.getElementById("player2Name").innerText = `Player two's name is ${players[1].name}`
+    document.querySelector("form").reset();
+}

@@ -9,9 +9,19 @@
 <body>
     <h1 id="title">Tic Tac Toe</h1>
     <div id="container"></div>
-
     <div id="winner"></div>
     <button id="start">Start New Game</button>
+    <div class="players">
+        <div id="player1Name">Player one's name is Alex</div>
+        <div id="player2Name">Player two's name is not Alex</div>
+        <form action="" id="choose-names">
+            <label for="player1">Player 1 name:</label>
+            <input type="text" id="player1" name="player1">
+            <label for="player2">Player 2 name:</label>
+            <input type="text" name="player2" id="player2">
+            <button id="submit" form="choose-names">Submit names</button>
+        </form>
+    </div>
     <script src="script.js"></script>
     
 </body>
