@@ -28,7 +28,6 @@ function gameBoard() {
 }
 
 const gameObject = gameBoard()
-console.log(gameObject.cells)
 
 function createBoard() {
     gameObject.cells.forEach((cell, index, cellsArray) => {
@@ -41,7 +40,6 @@ function createBoard() {
                 cellsArray[index] = activePlayer.sign;
                 newCell.textContent = activePlayer.sign;
                 nrTokensPlaced += 1;
-                console.log(nrTokensPlaced)
                 if (checkWinner() == true) {
                     displayWinner()
                     let cellz = document.querySelectorAll(".squareClass");
@@ -52,7 +50,6 @@ function createBoard() {
                     return
                 }
                 if (nrTokensPlaced == 9){
-                    // console.log("draw")
                     winner.innerText = "Draw"
                 }
                 switchPlayerTurn();
