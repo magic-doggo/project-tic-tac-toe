@@ -9,6 +9,8 @@
 
 #container > div {
     border: 2px solid red;
+    font-size: 100px;
+    text-align: center;
 }
 
 .disabled {
